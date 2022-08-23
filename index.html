@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/reset.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <title>Bate-papo UOL</title>
+  </head>
+  <body>
+    <div class="container-login ">
+      <img
+        class="logo-login"
+        src="./images/bate-papo-uol.png"
+        alt="Logo Bate Papo UOL"
+      />
+      <form>
+        <input
+          type="text"
+          name="user-name"
+          id="user-name"
+          value="Digite seu nome"
+        />
+        <input class="submit-login" type="submit" onclick="login(this)" value="Entrar"></input>
+      </form>
+    </div>
+    <div class="container-chat hidden">
+      <header>
+        <div class="header">
+          <img
+            class="logo-chat"
+            src="./images/bate-papo-uol.png"
+            alt="Logo Bate Papo UOL"
+          />
+          <ion-icon name="people" onclick="loadUsersBar()"></ion-icon>
+        </div>
+      </header>
+      <main>
+        <div class="box-message message-status">
+          <span class="message-time">(09:32:45) </span>
+          <span class="message-from">Victor </span>
+          <span class="message-type">entra na sala... </span>
+          <sapm class="message-to hidden">Todxs: </sapm>
+          <sapm class="message-text hidden">Boa tarde </sapm>
+        </div>
+        <div class="box-message">
+          <span class="message-time">(09:32:45) </span>
+          <span class="message-from">Victor </span>
+          <span class="message-type">para </span>
+          <sapm class="message-to">Todxs: </sapm>
+          <sapm class="message-text">Boa tarde </sapm>
+        </div>
+        <div class="box-message message-direct">          
+          <span class="message-time">(09:32:45) </span>
+          <span class="message-from">Victor </span>
+          <span class="message-type">reservadamente para </span>
+          <sapm class="message-to">Todxs: </sapm>
+          <sapm class="message-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. </sapm>
+        </div>
+        <div class="box-message message-status">
+          <span class="message-time">(09:32:45) </span>
+          <span class="message-from">Victor </span>
+          <span class="message-type">sai da sala... </span>
+          <sapm class="message-to hidden">Todxs: </sapm>
+          <sapm class="message-text hidden">Boa tarde </sapm>          
+        </div>
+
+        <div class="box-message message-status">
+          <span class="message-time">(09:32:45) </span>
+          <span class="message-from">Victor </span>
+          <span class="message-type">entra na sala... </span>
+          <sapm class="message-to hidden">Todxs: </sapm>
+          <sapm class="message-text hidden">Boa tarde </sapm>
+        </div>
+        <div class="box-message">
+          <span class="message-time">(09:32:45) </span>
+          <span class="message-from">Victor </span>
+          <span class="message-type">para </span>
+          <sapm class="message-to">Todxs: </sapm>
+          <sapm class="message-text">Boa tarde </sapm>
+        </div>
+        <div class="box-message message-direct">          
+          <span class="message-time">(09:32:45) </span>
+          <span class="message-from">Victor </span>
+          <span class="message-type">reservadamente para </span>
+          <sapm class="message-to">Todxs: </sapm>
+          <sapm class="message-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. </sapm>
+        </div>
+        <div class="box-message message-status">
+          <span class="message-time">(09:32:45) </span>
+          <span class="message-from">Victor </span>
+          <span class="message-type">sai da sala... </span>
+          <sapm class="message-to hidden">Todxs: </sapm>
+          <sapm class="message-text hidden">Boa tarde </sapm>          
+        </div>
+
+        <div class="box-message message-status">
+          <span class="message-time">(09:32:45) </span>
+          <span class="message-from">Victor </span>
+          <span class="message-type">entra na sala... </span>
+          <sapm class="message-to hidden">Todxs: </sapm>
+          <sapm class="message-text hidden">Boa tarde </sapm>
+        </div>
+        <div class="box-message">
+          <span class="message-time">(09:32:45) </span>
+          <span class="message-from">Victor </span>
+          <span class="message-type">para </span>
+          <sapm class="message-to">Todxs: </sapm>
+          <sapm class="message-text">Boa tarde </sapm>
+        </div>
+        <div class="box-message message-direct">          
+          <span class="message-time">(09:32:45) </span>
+          <span class="message-from">Victor </span>
+          <span class="message-type">reservadamente para </span>
+          <sapm class="message-to">Todxs: </sapm>
+          <sapm class="message-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. </sapm>
+        </div>
+        <div class="box-message message-status">
+          <span class="message-time">(09:32:45) </span>
+          <span class="message-from">Victor </span>
+          <span class="message-type">sai da sala... </span>
+          <sapm class="message-to hidden">Todxs: </sapm>
+          <sapm class="message-text hidden">Boa tarde </sapm>          
+        </div>
+
+        <div class="box-message message-status">
+          <span class="message-time">(09:32:45) </span>
+          <span class="message-from">Victor </span>
+          <span class="message-type">entra na sala... </span>
+          <sapm class="message-to hidden">Todxs: </sapm>
+          <sapm class="message-text hidden">Boa tarde </sapm>
+        </div>
+        <div class="box-message">
+          <span class="message-time">(09:32:45) </span>
+          <span class="message-from">Victor </span>
+          <span class="message-type">para </span>
+          <sapm class="message-to">Todxs: </sapm>
+          <sapm class="message-text">Boa tarde </sapm>
+        </div>
+        <div class="box-message message-direct">          
+          <span class="message-time">(09:32:45) </span>
+          <span class="message-from">Victor </span>
+          <span class="message-type">reservadamente para </span>
+          <sapm class="message-to">Todxs: </sapm>
+          <sapm class="message-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. </sapm>
+        </div>
+        <div class="box-message message-status">
+          <span class="message-time">(09:32:45) </span>
+          <span class="message-from">Victor </span>
+          <span class="message-type">sai da sala... </span>
+          <sapm class="message-to hidden">Todxs: </sapm>
+          <sapm class="message-text hidden">Boa tarde </sapm>          
+        </div>
+        
+      </main>
+      <footer>
+        <div class="footer ">
+          <input name="" id="message-to-send" cols="30" rows="10" value="Escreva aqui..."></input>
+          <button class="btn-send-messagem" onclick="sendMessage()"><ion-icon name="paper-plane-outline"></ion-icon></button>          
+        </div>
+      </footer>
+    </div>
+    <div class="container-users hidden">
+      <div class="box-outside" onclick="loadChat()"></div>
+      <div class="box-users">
+        <p>Escolha um contato para enviar mensagem:</p>
+        <ul class="list-users">      
+          <li onclick="selectUser(this)">
+            <ion-icon name="people"></ion-icon>
+            <span>Todos</span>            
+            <ion-icon name="checkmark" class="check selected"></ion-icon>           
+          </li>
+          <li onclick="selectUser(this)">
+            <ion-icon name="person-circle"></ion-icon>
+            <span>Victor</span>            
+            <ion-icon name="checkmark" class="check hidden"></ion-icon>
+          </li>
+          <li onclick="selectUser(this)">
+            <ion-icon name="person-circle"></ion-icon>
+            <span>Azevedo</span>            
+            <ion-icon name="checkmark" class="check hidden"></ion-icon>
+          </li>
+        </ul>
+        <p>Escolha a visibilidade</p>
+        <ul class="list-visibility">      
+          <li onclick="publicMessage()">
+            <ion-icon name="lock-open"></ion-icon>
+            Público           
+            <ion-icon name="checkmark" class="check selected"></ion-icon>
+          </li>
+          <li onclick="privateMessage()">
+            <ion-icon name="lock-closed"></ion-icon>
+            Reservadamente           
+            <ion-icon name="checkmark" class="check hidden"></ion-icon>
+          </li>
+        </ul>       
+        
+        
+      </div>
+    </div>
+    <script src="./scripts/script.js"></script>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+  </body>
+</html>
