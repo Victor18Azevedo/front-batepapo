@@ -13,7 +13,7 @@ body {
 
 .container-login,
 .container-chat,
-.container-users {
+.container-participants {
   width: 100vw;
   height: 100vh;
 }
@@ -27,13 +27,13 @@ body {
 }
 
 .logo-login {
-  width: 40vw;
+  width: 130px;
   margin: 0 auto;
   position: absolute;
   top: 10vh;
 }
 
-form {
+.input-login {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -57,7 +57,7 @@ form {
   border-radius: 4px;
 }
 
-.submit-login {
+.btn-login {
   height: 45px;
   background-color: #e7e7e7;
   color: #696969;
@@ -65,6 +65,11 @@ form {
   border-radius: 8px;
   padding: 0 30px;
   border: none;
+}
+
+.loading:focus {
+  width: 120px;
+  transition: ease-in 1s;
 }
 
 header,
@@ -146,7 +151,7 @@ footer {
   border: none;
 }
 
-.container-users {
+.container-participants {
   position: fixed;
   top: 0;
   left: 0;
@@ -160,7 +165,7 @@ footer {
   background-color: #00000060;
 }
 
-.box-users {
+.box-participants {
   width: 70%;
   height: 100%;
   background-color: #fff;
@@ -168,7 +173,7 @@ footer {
   font-size: 16px;
 }
 
-.box-users > p {
+.box-participants > p {
   font-size: 16px;
   font-weight: 700;
   line-height: 24px;
@@ -177,7 +182,7 @@ footer {
   margin-bottom: 35px;
 }
 
-.box-users li {
+.box-participants li {
   display: flex;
   align-items: center;
   gap: 5px;

@@ -21,15 +21,16 @@
         src="./images/bate-papo-uol.png"
         alt="Logo Bate Papo UOL"
       />
-      <form>
+      <div class="input-login">
         <input
           type="text"
           name="user-name"
           id="user-name"
           value="Digite seu nome"
         />
-        <input class="submit-login" type="submit" onclick="login(this)" value="Entrar"></input>
-      </form>
+        <button class="btn-login" type="submit" onclick="login(this)">Entrar</button>
+        <img class='loading hidden' src="./images/loading2.gif" alt="Carregando">
+      </div>
     </div>
     <div class="container-chat hidden">
       <header>
@@ -39,7 +40,7 @@
             src="./images/bate-papo-uol.png"
             alt="Logo Bate Papo UOL"
           />
-          <ion-icon name="people" onclick="loadUsersBar()"></ion-icon>
+          <ion-icon name="people" onclick="loadParticipantsBar()"></ion-icon>
         </div>
       </header>
       <main>
@@ -167,22 +168,22 @@
         </div>
       </footer>
     </div>
-    <div class="container-users hidden">
-      <div class="box-outside" onclick="loadChat()"></div>
-      <div class="box-users">
+    <div class="container-participants hidden">
+      <div class="box-outside" onclick="loadChatScreen()"></div>
+      <div class="box-participants">
         <p>Escolha um contato para enviar mensagem:</p>
-        <ul class="list-users">      
-          <li onclick="selectUser(this)">
+        <ul class="list-participants">      
+          <li onclick="selectParticipant(this)">
             <ion-icon name="people"></ion-icon>
             <span>Todos</span>            
             <ion-icon name="checkmark" class="check selected"></ion-icon>           
           </li>
-          <li onclick="selectUser(this)">
+          <li onclick="selectParticipant(this)">
             <ion-icon name="person-circle"></ion-icon>
             <span>Victor</span>            
             <ion-icon name="checkmark" class="check hidden"></ion-icon>
           </li>
-          <li onclick="selectUser(this)">
+          <li onclick="selectParticipant(this)">
             <ion-icon name="person-circle"></ion-icon>
             <span>Azevedo</span>            
             <ion-icon name="checkmark" class="check hidden"></ion-icon>
@@ -205,7 +206,8 @@
         
       </div>
     </div>
-    <script src="./scripts/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script src="./scripts/script.js"></script>
   </body>
 </html>
