@@ -26,10 +26,13 @@
           type="text"
           name="user-name"
           id="user-name"
-          value="Victor Azevedo"
+          value="Messi"
         />
         <button class="btn-login" type="submit" onclick="login(this)">Entrar</button>
-        <img class='loading hidden' src="./images/loading2.gif" alt="Carregando">
+        <div class='loading hidden'>
+          <img  src="./images/loading2.gif" alt="Carregando" width="30%">
+          <span>Entrando...</span>
+        </div>
       </div>
     </div>
     <div class="container-chat hidden">
@@ -43,127 +46,11 @@
           <ion-icon name="people" onclick="loadParticipantsBar()"></ion-icon>
         </div>
       </header>
-      <main>
-        <div class="box-message message-status">
-          <span class="message-time">(09:32:45) </span>
-          <span class="message-from">Victor </span>
-          <span class="message-type">entra na sala... </span>
-          <span class="message-to hidden">Todxs: </span>
-          <span class="message-text hidden">Boa tarde </span>
-        </div>
-        <div class="box-message">
-          <span class="message-time">(09:32:45) </span>
-          <span class="message-from">Victor </span>
-          <span class="message-type">para </span>
-          <span class="message-to">Todxs: </span>
-          <span class="message-text">Boa tarde </span>
-        </div>
-        <div class="box-message message-private">          
-          <span class="message-time">(09:32:45) </span>
-          <span class="message-from">Victor </span>
-          <span class="message-type">reservadamente para </span>
-          <span class="message-to">Todxs: </span>
-          <span class="message-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. </span>
-        </div>
-        <div class="box-message message-status">
-          <span class="message-time">(09:32:45) </span>
-          <span class="message-from">Victor </span>
-          <span class="message-type">sai da sala... </span>
-          <span class="message-to hidden">Todxs: </span>
-          <span class="message-text hidden">Boa tarde </span>          
-        </div>
-
-        <div class="box-message message-status">
-          <span class="message-time">(09:32:45) </span>
-          <span class="message-from">Victor </span>
-          <span class="message-type">entra na sala... </span>
-          <span class="message-to hidden">Todxs: </span>
-          <span class="message-text hidden">Boa tarde </span>
-        </div>
-        <div class="box-message">
-          <span class="message-time">(09:32:45) </span>
-          <span class="message-from">Victor </span>
-          <span class="message-type">para </span>
-          <span class="message-to">Todxs: </span>
-          <span class="message-text">Boa tarde </span>
-        </div>
-        <div class="box-message message-private">          
-          <span class="message-time">(09:32:45) </span>
-          <span class="message-from">Victor </span>
-          <span class="message-type">reservadamente para </span>
-          <span class="message-to">Todxs: </span>
-          <span class="message-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. </span>
-        </div>
-        <div class="box-message message-status">
-          <span class="message-time">(09:32:45) </span>
-          <span class="message-from">Victor </span>
-          <span class="message-type">sai da sala... </span>
-          <span class="message-to hidden">Todxs: </span>
-          <span class="message-text hidden">Boa tarde </span>          
-        </div>
-
-        <div class="box-message message-status">
-          <span class="message-time">(09:32:45) </span>
-          <span class="message-from">Victor </span>
-          <span class="message-type">entra na sala... </span>
-          <span class="message-to hidden">Todxs: </span>
-          <span class="message-text hidden">Boa tarde </span>
-        </div>
-        <div class="box-message">
-          <span class="message-time">(09:32:45) </span>
-          <span class="message-from">Victor </span>
-          <span class="message-type">para </span>
-          <span class="message-to">Todxs: </span>
-          <span class="message-text">Boa tarde </span>
-        </div>
-        <div class="box-message message-private">          
-          <span class="message-time">(09:32:45) </span>
-          <span class="message-from">Victor </span>
-          <span class="message-type">reservadamente para </span>
-          <span class="message-to">Todxs: </span>
-          <span class="message-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. </span>
-        </div>
-        <div class="box-message message-status">
-          <span class="message-time">(09:32:45) </span>
-          <span class="message-from">Victor </span>
-          <span class="message-type">sai da sala... </span>
-          <span class="message-to hidden">Todxs: </span>
-          <span class="message-text hidden">Boa tarde </span>          
-        </div>
-
-        <div class="box-message message-status">
-          <span class="message-time">(09:32:45) </span>
-          <span class="message-from">Victor </span>
-          <span class="message-type">entra na sala... </span>
-          <span class="message-to hidden">Todxs: </span>
-          <span class="message-text hidden">Boa tarde </span>
-        </div>
-        <div class="box-message">
-          <span class="message-time">(09:32:45) </span>
-          <span class="message-from">Victor </span>
-          <span class="message-type">para </span>
-          <span class="message-to">Todxs: </span>
-          <span class="message-text">Boa tarde </span>
-        </div>
-        <div class="box-message message-private">          
-          <span class="message-time">(09:32:45) </span>
-          <span class="message-from">Victor </span>
-          <span class="message-type">reservadamente para </span>
-          <span class="message-to">Todxs: </span>
-          <span class="message-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. </span>
-        </div>
-        <div class="box-message message-status">
-          <span class="message-time">(09:32:45) </span>
-          <span class="message-from">Victor </span>
-          <span class="message-type">sai da sala... </span>
-          <span class="message-to hidden">Todxs: </span>
-          <span class="message-text hidden">Boa tarde </span>          
-        </div>
-        
+      <main>        
       </main>
       <footer>
         <div class="footer ">
-          <input name="" id="message-to-send" cols="30" rows="10" value="Escreva aqui..."></input>
+          <input name="" id="message-to-send" cols="30" rows="10" value="Digite sua menssagem"></input>
           <button class="btn-send-messagem" onclick="sendMessage()"><ion-icon name="paper-plane-outline"></ion-icon></button>          
         </div>
       </footer>
@@ -173,32 +60,22 @@
       <div class="box-participants">
         <p>Escolha um contato para enviar mensagem:</p>
         <ul class="list-participants">      
-          <li onclick="selectParticipant(this)">
-            <ion-icon name="people"></ion-icon>
-            <span>Todos</span>            
-            <ion-icon name="checkmark" class="check selected"></ion-icon>           
-          </li>
-          <li onclick="selectParticipant(this)">
-            <ion-icon name="person-circle"></ion-icon>
-            <span>Victor</span>            
-            <ion-icon name="checkmark" class="check hidden"></ion-icon>
-          </li>
-          <li onclick="selectParticipant(this)">
-            <ion-icon name="person-circle"></ion-icon>
-            <span>Azevedo</span>            
-            <ion-icon name="checkmark" class="check hidden"></ion-icon>
-          </li>
+          
         </ul>
         <p>Escolha a visibilidade</p>
         <ul class="list-visibility">      
-          <li onclick="publicMessage()">
-            <ion-icon name="lock-open"></ion-icon>
-            Público           
+          <li class="public" onclick="visibilityMessages(this)">
+            <div class="box-li">
+              <ion-icon name="lock-open"></ion-icon>
+              <span>Público</span>
+            </div>
             <ion-icon name="checkmark" class="check selected"></ion-icon>
           </li>
-          <li onclick="privateMessage()">
-            <ion-icon name="lock-closed"></ion-icon>
-            Reservadamente           
+          <li class="private" onclick="visibilityMessages(this)">
+            <div class="box-li">
+              <ion-icon name="lock-open"></ion-icon>
+              <span>Reservadamente</span>       
+            </div>          
             <ion-icon name="checkmark" class="check hidden"></ion-icon>
           </li>
         </ul>       
@@ -212,3 +89,43 @@
     <script src="./scripts/script.js"></script>
   </body>
 </html>
+
+
+<!-- <div class="box-message message-status">
+  <span class="message-time">(09:32:45) </span>
+  <span class="message-from">Victor </span>
+  <span class="message-type">entra na sala... </span>
+  <span class="message-to hidden">Todxs: </span>
+  <span class="message-text hidden">Boa tarde </span>
+</div>
+<div class="box-message">
+  <span class="message-time">(09:32:45) </span>
+  <span class="message-from">Victor </span>
+  <span class="message-type">para </span>
+  <span class="message-to">Todxs: </span>
+  <span class="message-text">Boa tarde </span>
+</div>
+<div class="box-message message-private">          
+  <span class="message-time">(09:32:45) </span>
+  <span class="message-from">Victor </span>
+  <span class="message-type">reservadamente para </span>
+  <span class="message-to">Todxs: </span>
+  <span class="message-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. </span>
+</div> -->
+
+
+<!-- <li onclick="selectParticipant(this)">
+  <ion-icon name="people"></ion-icon>
+  <span>Todos</span>            
+  <ion-icon name="checkmark" class="check selected"></ion-icon>           
+</li>
+<li onclick="selectParticipant(this)">
+  <ion-icon name="person-circle"></ion-icon>
+  <span>Victor</span>            
+  <ion-icon name="checkmark" class="check hidden"></ion-icon>
+</li>
+<li onclick="selectParticipant(this)">
+  <ion-icon name="person-circle"></ion-icon>
+  <span>Azevedo</span>            
+  <ion-icon name="checkmark" class="check hidden"></ion-icon>
+</li> -->

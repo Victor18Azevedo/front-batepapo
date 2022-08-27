@@ -67,6 +67,14 @@ body {
   border: none;
 }
 
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
 .loading:focus {
   width: 120px;
   transition: ease-in 1s;
@@ -109,7 +117,7 @@ header {
 
 main {
   margin: 160px 0;
-  padding-top: 25px;
+  padding: 80px 0;
   margin-bottom: 100px;
   position: relative;
   bottom: 160px;
@@ -120,7 +128,7 @@ main {
   padding: 10px 15px;
 }
 
-.box-message > spam {
+.box-message > span {
   line-height: 24px;
 }
 
@@ -173,6 +181,11 @@ footer {
   font-size: 16px;
 }
 
+.list-participants {
+  height: 50vh;
+  overflow: scroll;
+}
+
 .box-participants > p {
   font-size: 16px;
   font-weight: 700;
@@ -184,15 +197,21 @@ footer {
 
 .box-participants li {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 5px;
   margin-bottom: 10px;
+  padding: 0 10px;
+}
+
+.box-li {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .check {
-  position: absolute;
   color: #28bb25;
-  right: 15px;
 }
 
 .hidden {
@@ -209,4 +228,5 @@ footer {
 
 ion-icon {
   font-size: 32px;
+  flex-shrink: 0;
 }
