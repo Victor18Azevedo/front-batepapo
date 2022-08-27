@@ -20,6 +20,9 @@ let participants;
 
 const elementParticipants = document.querySelector(".list-participants");
 const chat = document.querySelector("main");
+const messageLabel = document.querySelector(".message-label");
+messageLabel.innerHTML = "Enviando para Todos";
+
 const typeOfMessage = {
   status: "message-status",
   message: "",
@@ -115,7 +118,7 @@ function sendMessage() {
   const promessSendMessage = axios.post(urlMessages, messageToSend);
   promessSendMessage.then(sendMessageOK);
   promessSendMessage.catch(UserOnERROR);
-  elementText.value = "Escreva aqui";
+  elementText.value = "";
 }
 
 function selectParticipant(selectedParticipant) {
@@ -130,6 +133,9 @@ function selectParticipant(selectedParticipant) {
   // Atualizar messageToSend.to
   messageToSend.to = selectedParticipant.querySelector("span").innerHTML;
   // console.log(messageToSend.to);
+
+  // Atualiza rotulo
+  refreshLabelVisibiliy();
 }
 
 function visibilityMessages(selectedVisibility) {
@@ -147,6 +153,9 @@ function visibilityMessages(selectedVisibility) {
   } else {
     messageToSend.type = "private_message";
   }
+
+  // Atualiza rotulo
+  refreshLabelVisibiliy();
 }
 
 // *****************************************
@@ -222,6 +231,7 @@ function loadMessagesOK(response) {
     // Render Chat
     chat.innerHTML = "";
     messages.forEach(refreshChat);
+    refreshLabelVisibiliy();
     scrollChat();
   }
 }
@@ -248,10 +258,37 @@ function loadParticipantsOK(response) {
     // console.log(messageToSend.to);
   }
 }
+function refreshLabelVisibiliy() {
+  let labelVisibiliy = "";
+  if (messageToSend.type === "private_message") {
+    labelVisibiliy = " (reservadamente)";
+  }
+  // console;
+  messageLabel.innerHTML = `Enviando para ${messageToSend.to}${labelVisibiliy}`;
+}
 
-// *****************************************
-// Garbage
-// *****************************************
-// const promessLogin = axios.post(urlParticipants, userName);
-// promessLogin.then(processLogin);
-// promessLogin.catch(errorLogin)
+// Send whit enter Login
+const inputUserName = document.getElementById("user-name");
+// Execute a function when the user presses a key on the keyboard
+inputUserName.addEventListener("keypress", function (event) {
+  // If the user presses the "Enter" key on the keyboard
+  if (event.key === "Enter") {
+    // Cancel the default action, if needed
+    //event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("btn-login").click();
+  }
+});
+
+// Send whit enter Message
+const inputMessage = document.getElementById("message-to-send");
+// Execute a function when the user presses a key on the keyboard
+inputMessage.addEventListener("keypress", function (event) {
+  // If the user presses the "Enter" key on the keyboard
+  if (event.key === "Enter") {
+    // Cancel the default action, if needed
+    //event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("btn-send-messagem").click();
+  }
+});

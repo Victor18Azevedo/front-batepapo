@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+*:focus {
+  outline: none;
+}
+
 body {
   background-color: #fff;
   font-family: "Roboto", sans-serif;
@@ -141,17 +145,60 @@ main {
   font-weight: 700;
 }
 
+.message-text {
+  word-wrap: break-word;
+}
+
 footer {
   bottom: 0;
   box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.05);
 }
 
-#message-to-send {
-  height: 75px;
+.box-label {
+  height: 100%;
   width: 80%;
+}
+
+#message-to-send {
+  height: 30px;
+  width: 100%;
   border: none;
   font-size: 18px;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+/* Chrome, Firefox, Opera, Safari 10.1+ */
+#message-to-send::placeholder {
   font-style: italic;
+  font-size: 18px;
+  line-height: 1;
+  color: #000;
+  opacity: 1; /* Firefox */
+}
+
+/* Internet Explorer 10-11 */
+#message-to-send:-ms-input-placeholder {
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1;
+  color: #000;
+}
+
+/* Microsoft Edge */
+#message-to-send::-ms-input-placeholder {
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1;
+  color: #000;
+}
+
+.message-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 300;
+  color: #505050;
+  line-height: 1;
 }
 
 .btn-send-messagem {

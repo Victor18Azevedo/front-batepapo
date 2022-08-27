@@ -15,7 +15,7 @@
     <title>Bate-papo UOL</title>
   </head>
   <body>
-    <div class="container-login ">
+    <div class="container-login">
       <img
         class="logo-login"
         src="./images/bate-papo-uol.png"
@@ -23,14 +23,23 @@
       />
       <div class="input-login">
         <input
+          onClick="this.select();"
           type="text"
           name="user-name"
           id="user-name"
-          value="Messi"
+          value=""
+          placeholder="Digite seu nome"
         />
-        <button class="btn-login" type="submit" onclick="login(this)">Entrar</button>
-        <div class='loading hidden'>
-          <img  src="./images/loading2.gif" alt="Carregando" width="30%">
+        <button
+          id="btn-login"
+          class="btn-login"
+          type="submit"
+          onclick="login(this)"
+        >
+          Entrar
+        </button>
+        <div class="loading hidden">
+          <img src="./images/loading2.gif" alt="Carregando" width="30%" />
           <span>Entrando...</span>
         </div>
       </div>
@@ -46,12 +55,27 @@
           <ion-icon name="people" onclick="loadParticipantsBar()"></ion-icon>
         </div>
       </header>
-      <main>        
-      </main>
+      <main></main>
       <footer>
-        <div class="footer ">
-          <input name="" id="message-to-send" cols="30" rows="10" value="Digite sua menssagem"></input>
-          <button class="btn-send-messagem" onclick="sendMessage()"><ion-icon name="paper-plane-outline"></ion-icon></button>          
+        <div class="footer">
+          <div class="box-label">
+            <input
+            name="message-to-send"
+            id="message-to-send"
+            cols="30"
+            rows="10"
+            value=""
+            placeholder="Escreva aqui..."
+            ></input>
+            <span class="message-label"></span>
+          </div>
+          <button
+            class="btn-send-messagem"
+            id="btn-send-messagem"
+            onclick="sendMessage()"
+          >
+            <ion-icon name="paper-plane-outline"></ion-icon>
+          </button>
         </div>
       </footer>
     </div>
@@ -59,11 +83,9 @@
       <div class="box-outside" onclick="loadChatScreen()"></div>
       <div class="box-participants">
         <p>Escolha um contato para enviar mensagem:</p>
-        <ul class="list-participants">      
-          
-        </ul>
+        <ul class="list-participants"></ul>
         <p>Escolha a visibilidade</p>
-        <ul class="list-visibility">      
+        <ul class="list-visibility">
           <li class="public" onclick="visibilityMessages(this)">
             <div class="box-li">
               <ion-icon name="lock-open"></ion-icon>
@@ -74,22 +96,25 @@
           <li class="private" onclick="visibilityMessages(this)">
             <div class="box-li">
               <ion-icon name="lock-open"></ion-icon>
-              <span>Reservadamente</span>       
-            </div>          
+              <span>Reservadamente</span>
+            </div>
             <ion-icon name="checkmark" class="check hidden"></ion-icon>
           </li>
-        </ul>       
-        
-        
+        </ul>
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule=""
+      src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"
+    ></script>
     <script src="./scripts/script.js"></script>
   </body>
 </html>
-
 
 <!-- <div class="box-message message-status">
   <span class="message-time">(09:32:45) </span>
@@ -112,7 +137,6 @@
   <span class="message-to">Todxs: </span>
   <span class="message-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. </span>
 </div> -->
-
 
 <!-- <li onclick="selectParticipant(this)">
   <ion-icon name="people"></ion-icon>
