@@ -1,3 +1,4 @@
+/* GENERAL */
 * {
   box-sizing: border-box;
 }
@@ -22,6 +23,7 @@ body {
   height: 100vh;
 }
 
+/* LOGIN SCREEN */
 .container-login {
   display: flex;
   flex-direction: column;
@@ -84,6 +86,8 @@ body {
   transition: ease-in 1s;
 }
 
+/* CHAT SCREEN */
+/* HEADER*/
 header,
 footer {
   height: 80px;
@@ -119,6 +123,8 @@ header {
   padding: 10px;
 }
 
+/* CHAT SCREEN */
+/* CHAT*/
 main {
   margin: 160px 0;
   padding: 80px 0;
@@ -149,6 +155,8 @@ main {
   word-wrap: break-word;
 }
 
+/* CHAT SCREEN */
+/* FOOTER*/
 footer {
   bottom: 0;
   box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.05);
@@ -206,6 +214,8 @@ footer {
   border: none;
 }
 
+/* SIDE BAR*/
+/* PARTICIPANTS*/
 .container-participants {
   position: fixed;
   top: 0;
@@ -229,7 +239,7 @@ footer {
 }
 
 .list-participants {
-  height: 50vh;
+  height: 45vh;
   overflow: scroll;
 }
 
@@ -238,8 +248,8 @@ footer {
   font-weight: 700;
   line-height: 24px;
   text-align: center;
-  margin-top: 50px;
-  margin-bottom: 35px;
+  margin-top: 40px;
+  margin-bottom: 25px;
 }
 
 .box-participants li {

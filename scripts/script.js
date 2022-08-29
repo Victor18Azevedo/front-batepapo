@@ -1,10 +1,36 @@
 // *****************************************
+// Constants
+// *****************************************
+// TIME
+const UPDATE_CHAT = 3000;
+const UPDATE_USER_ON = 5000;
+const UPDATE_PARTICIPANTS = 10000;
+
+// API URLs
+const URL_PARTICIPANTS =
+  "https://mock-api.driven.com.br/api/v6/uol/participants";
+const URL_STATUS = "https://mock-api.driven.com.br/api/v6/uol/status";
+const URL_MESSAGEN = "https://mock-api.driven.com.br/api/v6/uol/messages";
+
+const REQ_OK = 200;
+const REQ_ERROR = 400;
+
+// Pages elements
+const elementParticipants = document.querySelector(".list-participants");
+const chat = document.querySelector("main");
+const messageLabel = document.querySelector(".message-label");
+messageLabel.innerHTML = "Enviando para Todos";
+
+// Object
+const typeOfMessage = {
+  status: "message-status",
+  message: "",
+  private_message: "message-private",
+};
+
+// *****************************************
 // Variables
 // *****************************************
-const urlParticipants =
-  "https://mock-api.driven.com.br/api/v6/uol/participants";
-const urlStatus = "https://mock-api.driven.com.br/api/v6/uol/status";
-const urlMessages = "https://mock-api.driven.com.br/api/v6/uol/messages";
 
 const userName = { name: "" };
 
@@ -12,29 +38,18 @@ const messageToSend = {
   from: "",
   to: "",
   text: "",
-  type: "message", // "message" ou "private_message" para o bônus
+  type: "message",
 };
 
 let messages;
 let participants;
-
-const elementParticipants = document.querySelector(".list-participants");
-const chat = document.querySelector("main");
-const messageLabel = document.querySelector(".message-label");
-messageLabel.innerHTML = "Enviando para Todos";
-
-const typeOfMessage = {
-  status: "message-status",
-  message: "",
-  private_message: "message-private",
-};
 
 let intervalLoginID;
 let intervalMessagesGET;
 let intervalParticipantsGET;
 
 // *****************************************
-// Functions for Load Screens
+// Functions for loading screens
 // *****************************************
 function loadLoginScreen(btn = document.querySelector(".btn-login")) {
   btn.classList.toggle("hidden");
@@ -63,7 +78,7 @@ function loadParticipantsList(participant) {
   }
   if (participant.name !== userName.name) {
     elementParticipants.innerHTML += `
-    <li onclick="selectParticipant(this)">
+    <li onclick="selectParticipant(this)" data-identifier="participant">
       <div class="box-li">
         <ion-icon name="person-circle"></ion-icon>
         <span>${participant.name}</span>            
@@ -100,13 +115,21 @@ function scrollChat() {
   lastElement.scrollIntoView();
 }
 
+function refreshLabelVisibiliy() {
+  let labelVisibiliy = "";
+  if (messageToSend.type === "private_message") {
+    labelVisibiliy = " (reservadamente)";
+  }
+  messageLabel.innerHTML = `Enviando para ${messageToSend.to}${labelVisibiliy}`;
+}
+
 // *****************************************
-// Functions for Actions from User
+// Functions for user actions
 // *****************************************
 function login(btn) {
   loadLoginScreen(btn);
   userName.name = document.getElementById("user-name").value;
-  const promessLogin = axios.post(urlParticipants, userName);
+  const promessLogin = axios.post(URL_PARTICIPANTS, userName);
   promessLogin.then(loginOK);
   promessLogin.catch(loginERROR);
 }
@@ -114,10 +137,9 @@ function login(btn) {
 function sendMessage() {
   const elementText = document.querySelector("#message-to-send");
   messageToSend.text = elementText.value;
-  // console.log(messageToSend.text);
-  const promessSendMessage = axios.post(urlMessages, messageToSend);
+  const promessSendMessage = axios.post(URL_MESSAGEN, messageToSend);
   promessSendMessage.then(sendMessageOK);
-  promessSendMessage.catch(UserOnERROR);
+  promessSendMessage.catch(chatERROR);
   elementText.value = "";
 }
 
@@ -130,11 +152,10 @@ function selectParticipant(selectedParticipant) {
   checkMark.classList.remove("hidden");
   checkMark.classList.add("selected");
 
-  // Atualizar messageToSend.to
+  // Update receiver name
   messageToSend.to = selectedParticipant.querySelector("span").innerHTML;
-  // console.log(messageToSend.to);
 
-  // Atualiza rotulo
+  // Update message label
   refreshLabelVisibiliy();
 }
 
@@ -147,35 +168,37 @@ function visibilityMessages(selectedVisibility) {
   checkMark.classList.remove("hidden");
   checkMark.classList.add("selected");
 
-  // Atualizar messageToSend.type
+  // Update message type
   if (selectedVisibility.classList.contains("public")) {
     messageToSend.type = "message";
   } else {
     messageToSend.type = "private_message";
   }
 
-  // Atualiza rotulo
+  /// Update message label
   refreshLabelVisibiliy();
 }
 
 // *****************************************
-// Functions to API
+// Functions for API (GETs and POSTs)
 // *****************************************
 function sendUserOnPOST() {
-  const promessUserOn = axios.post(urlStatus, userName);
-  promessUserOn.catch(UserOnERROR);
+  const promessUserOn = axios.post(URL_STATUS, userName);
+  promessUserOn.catch(chatERROR);
 }
 
 // Load Messagens
 function loadMessagesGET() {
-  const promessLoadMessages = axios.get(urlMessages);
+  const promessLoadMessages = axios.get(URL_MESSAGEN);
   promessLoadMessages.then(loadMessagesOK);
+  promessLoadMessages.catch(chatERROR);
 }
 
 // Load participants
 function loadParticipantsGET() {
-  const promessLoadParticipants = axios.get(urlParticipants);
+  const promessLoadParticipants = axios.get(URL_PARTICIPANTS);
   promessLoadParticipants.then(loadParticipantsOK);
+  promessLoadParticipants.catch(chatERROR);
 }
 
 //*****************************************
@@ -183,28 +206,31 @@ function loadParticipantsGET() {
 // ****************************************
 // Login OK
 function loginOK(response) {
-  if (response.status === 200) {
+  if (response.status === REQ_OK) {
     messageToSend.from = userName.name;
     loadChatScreen();
-    intervalLoginID = setInterval(sendUserOnPOST, 5000);
+    intervalLoginID = setInterval(sendUserOnPOST, UPDATE_USER_ON);
     loadMessagesGET();
-    intervalMessagesGET = setInterval(loadMessagesGET, 3000);
+    intervalMessagesGET = setInterval(loadMessagesGET, UPDATE_CHAT);
     loadParticipantsGET();
-    intervalParticipantsGET = setInterval(loadParticipantsGET, 10000);
+    intervalParticipantsGET = setInterval(
+      loadParticipantsGET,
+      UPDATE_PARTICIPANTS
+    );
   }
 }
 
 // Login ERROR
 function loginERROR(response) {
-  if (response.response.status == 400) {
+  if (response.response.status === REQ_ERROR) {
     alert("Usuário já exitente\nDigite um nome de usuário diferente");
   }
-  // Recarrega tela de login
   loadLoginScreen();
 }
 
-function UserOnERROR(response) {
-  if (response.response.status >= 400) {
+// Chat ERROR
+function chatERROR(response) {
+  if (response.response.status >= REQ_ERROR) {
     alert(
       "ERRO com o servidor!!!\nVocê será redirecionado para página inicial"
     );
@@ -213,11 +239,10 @@ function UserOnERROR(response) {
 }
 
 function loadMessagesOK(response) {
-  if (response.status === 200) {
+  if (response.status === REQ_OK) {
     const tempMessages = response.data;
-    // console.log(tempMessages);
 
-    // Filtrar Mensagens
+    // Private messages filter
     messages = tempMessages.filter(
       (messageForUse) =>
         messageForUse.from === userName.name ||
@@ -226,9 +251,8 @@ function loadMessagesOK(response) {
         (messageForUse.type === "private_message" &&
           (messageForUse.to === "Todos" || messageForUse.to === userName.name))
     );
-    // console.log(messages);
 
-    // Render Chat
+    // Refresh Chat
     chat.innerHTML = "";
     messages.forEach(refreshChat);
     refreshLabelVisibiliy();
@@ -237,58 +261,38 @@ function loadMessagesOK(response) {
 }
 
 function sendMessageOK(response) {
-  if (response.status === 200) {
+  if (response.status === REQ_OK) {
     loadMessagesGET();
   }
 }
 
 function loadParticipantsOK(response) {
-  if (response.status === 200) {
+  if (response.status === REQ_OK) {
     participants = response.data;
-
-    // participants.filter(select);
-
     participants.unshift({ name: "Todos" });
 
-    // Destinatario iniical ou verifica ******se o destinatio ainda esta na sala
+    // Update receiver
     if (messageToSend.to === "") {
       messageToSend.to = participants[0].name;
     }
-    // console.log("\nNovaLIsta\n");
-    // console.log(messageToSend.to);
   }
-}
-function refreshLabelVisibiliy() {
-  let labelVisibiliy = "";
-  if (messageToSend.type === "private_message") {
-    labelVisibiliy = " (reservadamente)";
-  }
-  // console;
-  messageLabel.innerHTML = `Enviando para ${messageToSend.to}${labelVisibiliy}`;
 }
 
+//*****************************************
+// Send whit enter
+// ****************************************
 // Send whit enter Login
 const inputUserName = document.getElementById("user-name");
-// Execute a function when the user presses a key on the keyboard
 inputUserName.addEventListener("keypress", function (event) {
-  // If the user presses the "Enter" key on the keyboard
   if (event.key === "Enter") {
-    // Cancel the default action, if needed
-    //event.preventDefault();
-    // Trigger the button element with a click
     document.getElementById("btn-login").click();
   }
 });
 
 // Send whit enter Message
 const inputMessage = document.getElementById("message-to-send");
-// Execute a function when the user presses a key on the keyboard
 inputMessage.addEventListener("keypress", function (event) {
-  // If the user presses the "Enter" key on the keyboard
   if (event.key === "Enter") {
-    // Cancel the default action, if needed
-    //event.preventDefault();
-    // Trigger the button element with a click
     document.getElementById("btn-send-messagem").click();
   }
 });
